@@ -6,3 +6,10 @@ body {
 .gray {
     color: gray;
 }
+.chatbox {
+    height:150px;
+    max-width:400px;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column-reverse;
+}
