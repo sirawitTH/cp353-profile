@@ -1,4 +1,8 @@
 body {
     background: rgba(73,155,234,1);
     font-family: 'Sriracha', cursive;
+    margin-bottom: 60px;
+}
+.gray {
+    color: gray;
 }
