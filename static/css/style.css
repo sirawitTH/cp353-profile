@@ -10,8 +10,6 @@ body {
     min-height:150px;
     max-height: 150px;
     overflow-y: scroll;
-    display: block;
-    /* flex-direction: column-reverse; */
 }
 .chatbox > p { 
     margin: 0;
