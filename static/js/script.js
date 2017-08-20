@@ -30,12 +30,12 @@ messagesRef.on('child_added', function (data) {
 
 function addToChatbox(msg) {
     var chatbox = document.getElementById('chatbox');
-    var span = document.createElement('p');
-    span.setAttribute('title', getDate(msg.timestamp));
-    span.setAttribute('data-toggle', 'tooltip');
-    span.setAttribute('data-placement', 'right');
-    span.innerText = msg.text;
-    chatbox.appendChild(span);
+    var p = document.createElement('p');
+    p.setAttribute('title', getDate(msg.timestamp));
+    p.setAttribute('data-toggle', 'tooltip');
+    p.setAttribute('data-placement', 'right');
+    p.innerText = msg.text;
+    chatbox.appendChild(p);
     chatbox.scrollTop = chatbox.scrollHeight;
 }
 
