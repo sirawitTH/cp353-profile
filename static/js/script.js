@@ -15,12 +15,15 @@ function send(msg) {
     if (!msg) {
         return;
     }
-    firebase.database().ref('messages/')
+    $.get('https://api.ipify.org/?format=json', function(data) {
+        firebase.database().ref('messages/')
         .push()
         .set({
             text: msg,
-            timestamp: new Date().getTime()
+            timestamp: new Date().getTime(),
+            ip: data.ip
         });
+    });
 }
 
 var messagesRef = firebase.database().ref('messages/').orderByKey().limitToLast(20);
