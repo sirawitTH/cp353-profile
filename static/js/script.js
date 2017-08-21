@@ -10,20 +10,29 @@ var config = {
 };
 firebase.initializeApp(config);
 
+var ip;
+$.get('https://api.ipify.org/?format=json', function (data) {
+    ip = data.ip;
+    firebase.database().ref('views/')
+        .push()
+        .set({
+            ip: ip,
+            timestamp: new Date().getTime()
+        });
+});
+
 function send(msg) {
     msg = msg.trim();
     if (!msg) {
         return;
     }
-    $.get('https://api.ipify.org/?format=json', function(data) {
-        firebase.database().ref('messages/')
+    firebase.database().ref('messages/')
         .push()
         .set({
             text: msg,
             timestamp: new Date().getTime(),
-            ip: data.ip
+            ip: ip
         });
-    });
 }
 
 var messagesRef = firebase.database().ref('messages/').orderByKey().limitToLast(20);
@@ -44,5 +53,5 @@ function addToChatbox(msg) {
 
 function getDate(timestamp) {
     var date = new Date(timestamp);
-    return date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear() + ' ' +date.getHours() + ':' + date.getMinutes() +':'+ date.getSeconds();
+    return date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear() + ' ' + date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds();
 }
